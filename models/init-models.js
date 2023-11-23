@@ -154,7 +154,7 @@ var _wishgroup = require("./wishgroup");
 var _xxx = require("./xxx");
 
 function initModels(sequelize) {
-  var access = _access(sequelize, DataTypes);
+  var access = _access(sequelize);
   var accessusers = _accessusers(sequelize, DataTypes);
   var aeroflottransaction = _aeroflottransaction(sequelize, DataTypes);
   var article = _article(sequelize, DataTypes);
