@@ -1,4 +1,5 @@
-const sequelize = require("../services/sequelize");
+import sequelize from "../services/sequelize";
+
 const Users = require('../models/users')(sequelize);
 const Clients = require('../models/client')(sequelize);
 

@@ -1,4 +1,4 @@
-const sequelize = require("../services/sequelize");
+import sequelize from "../services/sequelize";
 const ChecksModel = require('../models/checks')(sequelize);
 
 class ChecksController {

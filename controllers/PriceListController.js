@@ -1,4 +1,5 @@
-const sequelize = require("../services/sequelize");
+import sequelize from "../services/sequelize";
+
 const PricelistModel = require('../models/pricelist')(sequelize);
 const PriceModel = require('../models/price')(sequelize);
 const PriceTypeModel = require('../models/payment')(sequelize);
