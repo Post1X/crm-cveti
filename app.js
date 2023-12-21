@@ -1,28 +1,29 @@
 import indexRouter from "./routes/index";
-
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 var app = express();
 import cors from "cors";
-var morgan = require('morgan');
 import sequelize from "./services/sequelize";
-// view engine setup
+import createError from "http-errors";
+import path from "path";
+import express from "express";
+var morgan = require('morgan');
+import cookieParser from "cookie-parser";
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 sequelize.authenticate()
     .then(() => {
-      console.log('Подключение к базе данных успешно');
+        console.log('Подключение к базе данных успешно');
     })
     .catch((error) => {
-      console.error('Ошибка подключения к базе данных:', error);
+        console.error('Ошибка подключения к базе данных:', error);
+        morgan.error('Database connection error:', error);
     });
 
 app.use(morgan('combined'));
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

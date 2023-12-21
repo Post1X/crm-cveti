@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
-import UsersController from "../controllers/UsersController";
+import WorkersController from "../controllers/WorkersController";
 
+// workers
 
-router.get('/employee', UsersController.getUsers);
-router.post('/employee', UsersController.createUser);
-router.get('/client', UsersController.getClients);
-router.post('/client', UsersController.createClient);
+router.post('/workers/add', WorkersController.addWorker);
+router.put('/workers/update', WorkersController.editWorker);
+router.post('/workers/fire', WorkersController.deleteWorker);
+router.post('/workers/login', WorkersController.loginWorker)
+
+// managers
+
+router.post('/manager/add', WorkersController.addManager);
+router.post('/manager/login', WorkersController.loginManager);
 
 export default router;
